@@ -1,0 +1,26 @@
+<ion-view class="" style="background-color: #414F99">
+    <ion-content class="has-header" scroll="false" padding="'true'">
+            <div class="loginlog">
+                    <img src="resource/tj_icon.png"width="340px">     
+            </div>
+            <form class="list login" name="myForm" ng-submit="go2school(username,password)">
+                        <div class="ion-list">
+                            <label  class="item item-input">
+                                <span class="input-label  ion-person"stlye=""></span>
+                                <div class="input">
+                                        <input placeholder="请输入用户" type="text" ng-model="username" required>
+                                </div>
+                            </label>
+                            <label  class="item item-input">
+                                <span class="input-label  ion-locked"stlye=""></span>
+                               <div class="input">
+                                       <input placeholder="请输入密码" type="password" ng-model="password" required>
+                               </div> 
+                            </label>
+                        </div>
+                        <div class="spacer">
+                        </div>
+                         <button style="" class="button button-balanced button-block " type="submit" ng-disabled="myForm.$invalid">Login</button>
+            </form>
+    </ion-content>
+</ion-view>

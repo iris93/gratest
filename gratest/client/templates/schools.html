@@ -1,0 +1,33 @@
+<ion-view class="pane"view-title="院系选择" >
+    <ion-content  padding="'true'">
+
+        <form class="list">
+            <label style="background:white" class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input placeholder="请输入学院名称" type="search" ng-model="findSchool">
+            </label>
+            <ion-list style="">
+                         <label class="item item-input " ng-click="changestutype(studenttype.type)">
+                                <div class="input-label">点击切换学生类型：</div>
+                                {{studenttype.show}}
+                        </label>
+                  </ion-list>
+            <ion-list style="">
+                <div ng-repeat="school in schools | filter : findSchool" >
+                          <ion-item class="item"
+                                        ng-click="toggleGrade(school)"
+                                        ng-class="{active: isGradeShown(school)}"
+                                        style="color:#13306C;">
+                                  <i class="icon" ng-class="isGradeShown(school) ? 'ion-minus' : 'ion-plus'" style="color:#308DE8"></i>
+                                &nbsp {{school.name}}
+                        </ion-item>
+                        <ion-item class="item-accordion" ng-click = "go2scores(item,school)"
+                                        ng-repeat="item in school.subgrade | filter : findSchool"
+                                        ng-show="isGradeShown(school)"style="color:#0E43B1">
+                                &nbsp&nbsp&nbsp{{item.grade}}(级)
+                        </ion-item>
+                </div>
+            </ion-list>
+        </form>
+    </ion-content>
+</ion-view>

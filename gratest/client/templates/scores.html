@@ -1,0 +1,56 @@
+<ion-view class="pane" view-title="评分结果">
+<ion-content class ="padding" style="overflow: scroll;">
+        <div class=""style="height: 2.1rem;width:100%;border: blue solid 0.1rem">
+                      <i class="icon ion-star"></i>
+               <div class="" ng-click="change_schools()"style="height:2rem;float: left;width: 80%;font-size: 20px;">
+                      <marquee direction="left" onmouseover="this.stop();" onmouseout="this.start();"scrollamount=3>
+                              <span style="margin-top: 0.5rem;color: orange;  float:left;font-size:16px;">{{sch+":"+subgra+"级"+studenttype.show}}</span>
+                      </marquee>
+               </div>
+               <div ng-click="go2searchs()" class="" style="  float:right;font-size:28px;margin-top:0.12rem;color:#4B74D3 ">
+               <i class="icon ion-search"></i>
+               </div>
+      </div>
+      <div style="height: 0.5rem"></div>
+      <div>
+      <!-- <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh(1)"> -->
+            </ion-refresher>
+            <div class="card card1" ng-repeat="x in students">
+                 <div class="item item-divider"style="">
+                         <div  class=""style="  width: 75%;float: left;margin-top: 0rem;font-size: 1.0rem;position:absolute;"ng-click="toggle(x)" >    
+                               <div class=""style="display: inline-block; width: 6rem;" >学号:{{x.student_id}}
+                               &nbsp    &nbsp    &nbsp &nbsp
+                               <i ng-class="isDetailShown(x) ? 'ion-ios-arrow-up' : 'ion-ios-arrow-down'"style=""></i>   
+                               </div>
+                               <div class="">得分:{{x.student_score}}&nbsp    &nbsp    &nbsp &nbsp{{x.student_level}}</div> 
+                         </div>
+                       <div class=""style="   margin-right: 0;margin-top: 0.05rem;height: 2.1rem;float:right;position:relative;">
+                       </div>
+                </div>
+<!--                 <div class="item mydetail "ng-show="isDetailShown(x)">
+                        <table ng-repeat="book in x.student_lendbooks">
+                        <tr style="color: black;"><td class=""style="color: black;">书籍:</td><td>{{book[0]}}</td><td>{{book[1]}}</td></tr>
+                        </table>
+                        <table> <tr style="color: black;"><td class=""style="color: black;">书籍统计</td><td>{{x.student_bookscount}}</td></tr></table>
+                </div> -->
+                <div class="item mydetail "ng-show="isDetailShown(x)">
+                  <div  class="" style="  width: 100%;
+  border: 1px solid #B6F0F4;">
+                    <div ng-show="1" style="border: .1rem dotted yellow;">
+                                  <canvas id="bar" class="chart chart-bar" chart-data="x.student_bookscount"
+                                  chart-labels="labels" chart-legend="" chart-series="series"
+                                  height="240px">
+                                  </canvas>
+                    </div>
+                 </div>
+                </div>
+                </div>
+            </div>
+             <ion-infinite-scroll
+              ng-if="ready2Load()"
+              icon="ion-loading-c"
+              on-infinite="loadMoreData()"
+              distance="1%">
+              </ion-infinite-scroll>
+      </ion-content>
+</ion-view>

@@ -1,0 +1,52 @@
+<ion-view style="background-color: #E0D8F0"view-title="其他信息">
+    <ion-content>
+    <div class="userbox"style="">
+        <div class="userimage" style="" ng-click="">
+            <img class=""style="width: 100%;height: 100%;border-radius: 2.99rem;"ng-src="{{userimg}}">
+        </div>
+    </div>
+   <div class="item">
+   <i class="ion-person" style="float: left;color: #658CEE"></i>
+   <i style="margin-left: .8rem">用户:{{username}}</i>
+   </div>
+  <div class="item">
+   <i class="ion-at" style="float: left;color: #658CEE"></i>
+   <i style="margin-left: .8rem">工号:{{user_id}}</i>
+   </div>
+   <div class="item">
+    <i class="ion-home" style="float: left;color: #658CEE;font-size: 19px"></i>
+    <i style="margin-left: .8rem;white-space: pre-wrap">院系:{{userschool}}</i>
+    </div>
+    <!-- <div class="item">
+    职务
+    </div> -->
+    <div style="height: 1rem;"></div>
+    <div class="item" ng-click="feedbackflag=!feedbackflag">
+    <i class="ion-android-send" style="float: left;color: #658CEE;font-size: 15px"></i>
+    <i style="margin-left: .8rem;">帮助与反馈</i>
+    </div>
+    <div ng-show="feedbackflag" class="">
+    <form class="feedback" name="feedbackForm"autocomplete="true" ng-submit="feedback(queryMode.feedbackcontent)" >
+                        <div class="">
+                        
+                               <div class=""style=" height: 5rem;width: 100%">
+                                       <textarea placeholder="请输入问题描述，大于10个字符"
+                                        style=" height: 5rem;width: 100%"type="textarea" ng-model="queryMode.feedbackcontent" required></textarea>
+                               </div> 
+                    
+                        </div>
+                         <div>
+                         <button style="width: 20%;height:1.6rem;margin-left: 6.5rem;" class="button button-small button-balanced  " type="submit" ng-click="feedbackflag=!feedbackflag">提交</button>
+                          <button style="width: 20%;height:1.6rem" class="button button-small button-stable  " ng-click="feedbackflag=!feedbackflag"type="reset">取消</button>
+                          </div>
+                          <div class="spacer" ></div>
+            </form>
+            </div>
+       
+    <div class="item" ng-click="logout()">
+    <i class="ion-close-circled" style="float: left;color: #658CEE;font-size: 15px"></i>
+    <i style="margin-left: .8rem">注销登录</i>
+    
+    </div>
+    </ion-content>
+</ion-view>
